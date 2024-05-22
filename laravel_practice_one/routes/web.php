@@ -22,7 +22,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::middleware(['auth'])->group(function () {
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/application',[ApplicationController::class,'create'])->name('application.create');
 Route::post('/application',[ApplicationController::class,'store'])->name('application.store');
+
+});
